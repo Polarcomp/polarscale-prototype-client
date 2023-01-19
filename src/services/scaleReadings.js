@@ -23,6 +23,7 @@ export const getHistory = async ({range}) => {
     const params = new URLSearchParams([
         ['range', range]
     ]);
+    console.log(headers)
     const response = await axios.get(`${baseUrl}/scales/history`, {
         params,
         headers
