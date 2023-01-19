@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:8081'
+const baseUrl = 'https://vfiomlqwajbenjwswajz.functions.supabase.co/index'
 
 const parseHistData = (response) => {
     try {
