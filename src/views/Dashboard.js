@@ -2,6 +2,7 @@ import React from 'react'
 import HistoryChart from '../components/HistoryChart'
 import LatestReadings from '../components/LatestReadings'
 import {Box, Typography} from '@mui/material'
+import useMqtt from '../state/hooks/useMqtt'
 
 const dashboardStyle = {
     minHeight: '100%',
@@ -13,13 +14,13 @@ const dashboardStyle = {
 }
 
 const Dashboard = () => {
+    const topic = 'testuser1/+'
+    useMqtt({topic});
     return (
         <Box m="auto" sx={dashboardStyle}>
             <Typography variant="h2" component="h1">
                 Your Scales
             </Typography>
-            <LatestReadings />
-            <HistoryChart />
         </Box>
     )
 }
