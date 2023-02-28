@@ -30,7 +30,7 @@ const Dashboard = () => {
                 Hello Nolla!
             </Typography>
             <LatestReadings userId={userId}/>
-            <HistoryChart userId={userId}/>
+            <HistoryChart userId={userId} scales={scales}/>
         </Box>
     )
 }

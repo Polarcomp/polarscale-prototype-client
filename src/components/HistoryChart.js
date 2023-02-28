@@ -13,7 +13,7 @@ const historyChartDisplay = {
     width: '100%'
 }
 
-const HistoryChart = ({ userId }) => {
+const HistoryChart = ({ userId, scales }) => {
     const [timeRange, setTimeRange] = React.useState(1);
     const chooseRange = (range) => {
         setTimeRange(range);
@@ -24,7 +24,7 @@ const HistoryChart = ({ userId }) => {
                 History
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
-            <Totals timeRange={timeRange} userId={userId}/>
+            <Totals timeRange={timeRange} userId={userId} scales={scales}/>
             <Typography variant="h5" component="h3">
                 Live Values
             </Typography>

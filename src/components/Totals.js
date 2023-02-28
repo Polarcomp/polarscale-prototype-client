@@ -10,23 +10,26 @@ const flexBox = {
     flexWrap: 'wrap',
 }
 
-const queryTotal = async (setTotals, timeRange, userId) => {
+const queryTotal = async (setTotals, timeRange, userId, scales) => {
     const range = timeRange;
     const response = await getTotals({ range, userId });
-    setTotals(response.total);
+    const result = scales.map(scale => {
+        const strId = 'id_' + scale.device_id.toString();
+        return { ...scale, total: response.total[strId]};
+    })
+    setTotals(result);
 }
 
-const Totals = ({timeRange, userId}) => {
+const Totals = ({timeRange, userId, scales}) => {
     const [totals, setTotals] = useState({});
-
     useEffect(() => {
-        queryTotal(setTotals, timeRange, userId);
-    }, [timeRange, userId]);
+        queryTotal(setTotals, timeRange, userId, scales);
+    }, [timeRange, userId, scales]);
     console.log(totals);
     return (
         <Box textAlign={'center'} minWidth={'100%'}>
             <Typography m={2} variant="h4" component="h2">
-    s           Total
+               Total
             </Typography>
             <Box sx={flexBox}>
                 TEST
