@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getTotal } from '../services/scaleReadings'
 import { useInterval } from '../state/hooks/useInterval';
 import HistoryChartLine from './HistoryChartLine'
+import { intervalPeriods } from '../shared/constants.js';
 
 const influxQuery = async (timeRange, setReadings, setTimePeriod) => {
     const range = timeRange;
@@ -19,7 +20,7 @@ const HistoryChartTotal = ({timeRange}) => {
     }, [timeRange]);
     useInterval(() => {
         influxQuery(timeRange, setReadings, setTimePeriod)
-    }, 1000);
+    }, intervalPeriods.halfHour);
 
     return (
         <HistoryChartLine data={readings} timePeriod={timePeriod}/>
