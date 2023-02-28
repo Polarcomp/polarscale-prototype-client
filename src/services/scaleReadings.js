@@ -19,9 +19,10 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-export const getHistory = async ({range}) => {
+export const getHistory = async ({range, userId}) => {
     const params = new URLSearchParams([
-        ['range', range]
+        ['range', range],
+        ['user_id', userId]
     ]);
     const response = await axios.get(`${baseUrl}/scales/history`, {
         params,
@@ -30,16 +31,20 @@ export const getHistory = async ({range}) => {
     return parseHistData(response);
 }
 
-export const getTotal = async ({range}) => {
+export const getTotal = async ({range, userId}) => {
     const params = new URLSearchParams([
-        ['range', range]
+        ['range', range],
+        ['user_id', userId]
     ]);
     const response = await axios.get(`${baseUrl}/scales/accumulated`, { params, headers });
     return parseHistData(response);
 }
 
-export const getLastestAll = async () => {
-    const response = await axios.get(`${baseUrl}/scales/latest`, { headers } );
+export const getLastestAll = async (user_id) => {
+    const params = new URLSearchParams([
+        ['user_id', user_id]
+    ])
+    const response = await axios.get(`${baseUrl}/scales/latest`, { params, headers } );
     try {
         return (response.data);
     }
