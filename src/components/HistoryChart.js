@@ -2,7 +2,7 @@ import React from 'react'
 import HistoryChartRealValue from '../components/HistoryChartRealValue'
 import ChartRangeControl from './ChartRangeControl'
 import {Box, Typography} from '@mui/material'
-import HistoryChartTotal from './HistoryChartTotal'
+import HistoryChartAccumulated from './HistoryChartAccumulated'
 
 const historyChartDisplay = {
     display: 'flex',
@@ -30,7 +30,7 @@ const HistoryChart = ({ userId }) => {
             <Typography variant="h5" component="h3">
                 Live Totals
             </Typography>
-            <HistoryChartTotal timeRange={timeRange} userId={userId}/>
+            <HistoryChartAccumulated timeRange={timeRange} userId={userId}/>
         </Box>
     )
 }

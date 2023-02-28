@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { getTotal } from '../services/scaleReadings'
+import { getAccumulated } from '../services/scaleReadings'
 import { useInterval } from '../state/hooks/useInterval';
 import HistoryChartLine from './HistoryChartLine'
 import { intervalPeriods } from '../shared/constants.js';
 
 const influxQuery = async (timeRange, setReadings, setTimePeriod, userId) => {
     const range = timeRange;
-    const response = await getTotal({range, userId});
+    const response = await getAccumulated({range, userId});
     setReadings(response.readings);
     setTimePeriod(response.timePeriod);
 }
 
-const HistoryChartTotal = ({timeRange, userId}) => {
+const HistoryChartAccumulated = ({timeRange, userId}) => {
     const [readings, setReadings] = useState([]);
     const [timePeriod, setTimePeriod] = useState({});
 
@@ -27,4 +27,4 @@ const HistoryChartTotal = ({timeRange, userId}) => {
     )
 }
 
-export default HistoryChartTotal
+export default HistoryChartAccumulated

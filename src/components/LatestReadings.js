@@ -40,7 +40,7 @@ const LatestReadings = ({ userId }) => {
     return (
         <Box textAlign={'center'} minWidth={'100%'}>
             <Typography m={2} variant="h4" component="h2">
-                Categories
+                Total
             </Typography>
             <Box sx={flexBox}>
                 {scaleComponentArray(data)}
