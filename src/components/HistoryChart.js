@@ -3,6 +3,7 @@ import HistoryChartRealValue from '../components/HistoryChartRealValue'
 import ChartRangeControl from './ChartRangeControl'
 import {Box, Typography} from '@mui/material'
 import HistoryChartAccumulated from './HistoryChartAccumulated'
+import Totals from './Totals'
 
 const historyChartDisplay = {
     display: 'flex',
@@ -23,6 +24,7 @@ const HistoryChart = ({ userId }) => {
                 History
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
+            <Totals timeRange={timeRange} userId={userId}/>
             <Typography variant="h5" component="h3">
                 Live Values
             </Typography>

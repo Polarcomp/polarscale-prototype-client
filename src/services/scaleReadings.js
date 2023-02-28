@@ -1,10 +1,6 @@
 import axios from 'axios'
 const baseUrl = 'https://vfiomlqwajbenjwswajz.functions.supabase.co/index'
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
-/*
-const baseUrl = 'http://localhost:54321/functions/v1/index'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
-*/
 
 const parseHistData = (response) => {
     try {
@@ -57,7 +53,7 @@ export const getLastestAll = async (user_id) => {
     }
 }
 
-export const getTotal = async({range, userId}) => {
+export const getTotals = async({range, userId}) => {
     const params = new URLSearchParams([
         ['range', range],
         ['user_id', userId]
