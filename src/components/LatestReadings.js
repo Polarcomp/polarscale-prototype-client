@@ -34,7 +34,7 @@ const LatestReadings = ({ userId }) => {
         influxQuery(setData, userId);
     }, [userId]);
     useInterval(() => {
-        influxQuery(setData);
+        influxQuery(setData, userId);
     }, intervalPeriods.halfHour);
 
     return (
