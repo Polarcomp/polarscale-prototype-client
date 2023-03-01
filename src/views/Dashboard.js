@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import HistoryChart from '../components/HistoryChart'
-import LatestReadings from '../components/LatestReadings'
 import {Box, Typography} from '@mui/material'
 import { getScales } from '../services/user'
 
