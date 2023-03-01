@@ -22,9 +22,9 @@ const constructTicks = (timePeriod) => {
     return (result);
 }
 
-const HistoryChartLine = ({data, timePeriod}) => {
+const HistoryChartLine = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
-    const scale_ids = ["id_39748960246732","id_79741262426312"]
+    console.log(scales);
     const ticks = constructTicks(timePeriod);
     return (
         <ResponsiveContainer width={"100%"} height={400}>
@@ -32,16 +32,18 @@ const HistoryChartLine = ({data, timePeriod}) => {
                 <CartesianGrid strokeDasharray="3 3"/>
                 <Tooltip contentStyle={{backgroundColor: '#121212'}}
                     labelFormatter = {(date) => moment.unix(date).format("HH:mm")}
+                    formatter={(value) => value.toFixed(1) + " kg"}
                 />
-                {scale_ids.map((id, index) => {
+                {scales.map((scale, index) => {
                     return <Line 
                         isAnimationActive={false}
                         type="monotone"
-                        key={id}
+                        key={scale.device_id}
                         stroke={colors[index]}
                         strokeWidth={1}
-                        dataKey={id}
+                        dataKey={scale.device_id}
                         dot={false}
+                        name={scale.name}
                         />
                 })}
                 <XAxis 

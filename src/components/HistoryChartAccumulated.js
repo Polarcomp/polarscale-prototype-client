@@ -11,7 +11,7 @@ const influxQuery = async (timeRange, setReadings, setTimePeriod, userId) => {
     setTimePeriod(response.timePeriod);
 }
 
-const HistoryChartAccumulated = ({timeRange, userId}) => {
+const HistoryChartAccumulated = ({timeRange, userId, scales}) => {
     const [readings, setReadings] = useState([]);
     const [timePeriod, setTimePeriod] = useState({});
 
@@ -23,7 +23,7 @@ const HistoryChartAccumulated = ({timeRange, userId}) => {
     }, intervalPeriods.halfHour);
 
     return (
-        <HistoryChartLine data={readings} timePeriod={timePeriod}/>
+        <HistoryChartLine data={readings} timePeriod={timePeriod} scales={scales}/>
     )
 }
 
