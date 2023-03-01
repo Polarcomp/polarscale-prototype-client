@@ -24,7 +24,6 @@ const constructTicks = (timePeriod) => {
 
 const HistoryChartLine = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
-    console.log(scales);
     const ticks = constructTicks(timePeriod);
     return (
         <ResponsiveContainer width={"100%"} height={400}>

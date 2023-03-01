@@ -21,7 +21,7 @@ const HistoryChart = ({ userId, scales }) => {
     return (
         <Box sx={historyChartDisplay}>
             <Typography variant="h4" component="h2">
-                History
+                Time Period
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
             <Totals timeRange={timeRange} userId={userId} scales={scales}/>
