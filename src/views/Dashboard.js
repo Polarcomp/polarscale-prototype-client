@@ -14,7 +14,10 @@ const dashboardStyle = {
 }
 
 const queryScales = async (setScales, user_id) => {
-    const scales = await getScales(user_id)
+    let scales = await getScales(user_id)
+    scales = scales.map(scale => {
+        return { ...scale, device_id: 'id_' + scale.device_id.toString()}
+    })
     setScales(scales);
 }
 

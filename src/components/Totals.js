@@ -19,8 +19,7 @@ const queryTotal = async (setTotals, timeRange, userId, scales) => {
     if (!response.total)
         return
     const result = scales.map(scale => {
-        const strId = 'id_' + scale.device_id.toString();
-        return { ...scale, total: response.total[strId]};
+        return { ...scale, total: response.total[scale.device_id]};
     })
     setTotals(result);
 }
