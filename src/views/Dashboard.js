@@ -29,7 +29,6 @@ const Dashboard = () => {
             <Typography variant="h2" component="h1">
                 Hello Nolla!
             </Typography>
-            <LatestReadings userId={userId}/>
             <HistoryChart userId={userId} scales={scales}/>
         </Box>
     )
