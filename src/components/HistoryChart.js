@@ -25,14 +25,11 @@ const HistoryChart = ({ userId, scales }) => {
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
             <Totals timeRange={timeRange} userId={userId} scales={scales}/>
-            <Typography variant="h5" component="h3">
-                Running Totals
-            </Typography>
-            <HistoryChartAccumulated timeRange={timeRange} userId={userId}/>
+            <HistoryChartAccumulated timeRange={timeRange} userId={userId} scales={scales}/>
             <Typography variant="h5" component="h3">
                 Live Values
             </Typography>
-            <HistoryChartRealValue timeRange={timeRange} userId={userId}/>
+            <HistoryChartRealValue timeRange={timeRange} userId={userId} scales={scales}/>
         </Box>
     )
 }
