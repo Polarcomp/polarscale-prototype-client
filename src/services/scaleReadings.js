@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { getLastMonday, getEndOfWeek } from '../shared/helpers';
+
 const baseUrl = 'https://vfiomlqwajbenjwswajz.functions.supabase.co/index'
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
 
@@ -59,6 +61,24 @@ export const getTotals = async({range, userId}) => {
         ['user_id', userId]
     ]);
     const response = await axios.get(`${baseUrl}/scales/total`, { params, headers });
+    try {
+        return (response.data);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
+export const getDaily = async ({ userId }) => {
+    const lastMonday = getLastMonday().getTime() / 1000;
+    const endOfWeek = Math.floor(getEndOfWeek().getTime() / 1000);
+    const params = new URLSearchParams([
+        ['start', lastMonday],
+        ['stop', endOfWeek],
+        ['user_id', userId]
+    ]);
+    const response = await axios.get(`${baseUrl}/scales/daily`, { params, headers });
+    console.log(response);
     try {
         return (response.data);
     }
