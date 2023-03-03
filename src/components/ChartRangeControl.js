@@ -9,8 +9,7 @@ const ChartRangeControl = ({chooseRange}) => {
         { value: 3, scaledValue: 4, label: '4 hrs' },
         { value: 4, scaledValue: 8, label: '8 hrs' },
         { value: 5, scaledValue: 12, label: '12 hrs' },
-        { value: 6, scaledValue: 24, label: '1 day' },
-       { value: 7, scaledValue: 168, label: '1 week' }
+        { value: 6, scaledValue: 24, label: '1 day' }
     ];
     const scale = value => {
         const index = value - 1;
