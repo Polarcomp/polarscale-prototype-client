@@ -14,7 +14,6 @@ const dailyChartDisplay = {
 
 const influxQuery = async (setReadings, userId) => {
     const response = await getDaily({ userId });
-    console.log(response);
     setReadings(response.readings);
 }
 
