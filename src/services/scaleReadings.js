@@ -72,15 +72,15 @@ export const getTotals = async({range, userId}) => {
 export const getDaily = async ({ userId }) => {
     const lastMonday = getLastMonday().getTime() / 1000;
     const endOfWeek = Math.floor(getEndOfWeek().getTime() / 1000);
-    console.log(lastMonday, endOfWeek)
     const params = new URLSearchParams([
         ['start', lastMonday],
         ['stop', endOfWeek],
         ['user_id', userId]
     ]);
     const response = await axios.get(`${baseUrl}/scales/daily`, { params, headers });
+    response.data.readings.shift();
     try {
-        return (response.data);
+        return { ...response.data }
     }
     catch (error) {
         console.error(error);
