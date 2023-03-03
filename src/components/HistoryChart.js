@@ -1,5 +1,4 @@
 import React from 'react'
-import HistoryChartRealValue from '../components/HistoryChartRealValue'
 import ChartRangeControl from './ChartRangeControl'
 import {Box, Typography} from '@mui/material'
 import HistoryChartAccumulated from './HistoryChartAccumulated'
@@ -21,15 +20,11 @@ const HistoryChart = ({ userId, scales }) => {
     return (
         <Box sx={historyChartDisplay}>
             <Typography variant="h4" component="h2">
-                Time Period
+                Current Hourly Total
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
             <Totals timeRange={timeRange} userId={userId} scales={scales}/>
             <HistoryChartAccumulated timeRange={timeRange} userId={userId} scales={scales}/>
-            <Typography variant="h5" component="h3">
-                Live Values
-            </Typography>
-            <HistoryChartRealValue timeRange={timeRange} userId={userId} scales={scales}/>
         </Box>
     )
 }

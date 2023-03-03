@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getTotals } from "../services/scaleReadings";
-import {Box, Typography} from '@mui/material'
+import { Box } from '@mui/material'
 import TotalsIndividual from "./TotalsIndividual";
 import { useInterval } from "../state/hooks/useInterval";
 import { intervalPeriods } from "../shared/constants";
@@ -44,9 +44,6 @@ const Totals = ({timeRange, userId, scales}) => {
     }, intervalPeriods.halfHour)
     return (
         <Box textAlign={'center'} minWidth={'100%'}>
-            <Typography m={2} variant="h4" component="h2">
-               Total
-            </Typography>
             <Box sx={flexBox}>
                 {scaleComponentArray(totals)}
             </Box>
