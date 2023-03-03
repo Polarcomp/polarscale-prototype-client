@@ -10,9 +10,10 @@ export const getLastMonday = () => {
 
 export const getEndOfWeek = () => {
     const endOfWeek = new Date();
-    endOfWeek.setSeconds(59);
-    endOfWeek.setMinutes(59);
-    endOfWeek.setHours(23);
-    endOfWeek.setDate(endOfWeek.getDate() + (7 - endOfWeek.getDay()) % 7);
+    endOfWeek.setMilliseconds(0)
+    endOfWeek.setSeconds(0);
+    endOfWeek.setMinutes(0);
+    endOfWeek.setHours(0);
+    endOfWeek.setDate(endOfWeek.getDate() + ((7 - endOfWeek.getDay()) % 7) + 1);
     return (endOfWeek);
 }
