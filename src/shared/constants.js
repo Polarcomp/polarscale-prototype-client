@@ -4,3 +4,5 @@ export const intervalPeriods = {
     halfHour: 1800000,
     hour: 3600000
 };
+
+export const secondsInWeek = 604800

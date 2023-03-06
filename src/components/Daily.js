@@ -1,6 +1,6 @@
-import { Typography } from "@mui/material";
+import { Typography, ToggleButtonGroup, ToggleButton } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, {useState} from "react";
 import { getDaily } from "../services/scaleReadings";
 import ChartHandler from './ChartHandler';
 
@@ -12,14 +12,35 @@ const dailyChartDisplay = {
     width: '100%'
 }
 
+const WeeksSelection = ({weeks, setWeeks}) => {
+    const handleChange = (event, newWeek) => {
+        setWeeks(newWeek);
+    }
+    return (
+        <ToggleButtonGroup
+            value={weeks}
+            exclusive
+            onChange={handleChange}
+        >
+            <ToggleButton value={1}>Current week</ToggleButton>
+            <ToggleButton value={2}>2 weeks</ToggleButton>
+            <ToggleButton value={3}>3 weeks</ToggleButton>
+            <ToggleButton value={4}>4 weeks</ToggleButton>
+        </ToggleButtonGroup>
+    )
+}
+
 const Daily = ({ userId, scales }) => {
+    const [weeks, setWeeks] = useState(1);
+
     return (
         <Box sx={dailyChartDisplay}>
             <Typography variant="h4" component="h2">
                 Daily Totals
             </Typography>
+            <WeeksSelection weeks={weeks} setWeeks={setWeeks} />
             <ChartHandler
-                timeRange={0}
+                timeRange={weeks}
                 userId={userId}
                 scales={scales}
                 fetchQuery={getDaily}
@@ -27,7 +48,7 @@ const Daily = ({ userId, scales }) => {
             />
             <br />
             <ChartHandler 
-                timeRange={0}
+                timeRange={weeks}
                 userId={userId}
                 scales={scales}
                 fetchQuery={getDaily}

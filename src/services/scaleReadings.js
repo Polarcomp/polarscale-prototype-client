@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { secondsInWeek } from '../shared/constants';
 import { getLastMonday, getEndOfWeek } from '../shared/helpers';
 
 const baseUrl = 'https://vfiomlqwajbenjwswajz.functions.supabase.co/index'
@@ -43,8 +44,11 @@ export const getLastestAll = async (user_id) => {
     }
 }
 
-export const getDaily = async ({ userId, endpoint }) => {
-    const lastMonday = getLastMonday().getTime() / 1000;
+export const getDaily = async ({ userId, endpoint, range }) => {
+    if (range < 1 || range > 4)
+        range = 1;
+    const weekOffset = secondsInWeek * (range - 1);
+    const lastMonday = getLastMonday().getTime() / 1000 - weekOffset;
     const endOfWeek = Math.floor(getEndOfWeek().getTime() / 1000);
     const params = new URLSearchParams([
         ['start', lastMonday],

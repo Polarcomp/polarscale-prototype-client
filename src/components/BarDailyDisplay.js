@@ -16,6 +16,7 @@ import { todayTimestamp } from "../shared/helpers";
 
 const BarDailyDisplay = ({ data, scales }) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
+    const xTickAngle = data.length > 7 ? -45 : 0;
     return (
         <ResponsiveContainer width={"100%"} height={400}>
             <BarChart data={data}>
@@ -35,6 +36,7 @@ const BarDailyDisplay = ({ data, scales }) => {
                 <XAxis
                     dataKey="timestamp"
                     tickFormatter={(date) => moment.unix(date).format("dddd")}
+                    angle={xTickAngle}
                 />
                 <YAxis
                     label={{ value: 'kgs', angle: -90, position: 'insideLeft', fill: 'white'}}
