@@ -25,6 +25,7 @@ const Daily = ({ userId, scales }) => {
                 fetchQuery={getDaily}
                 endpoint='daily'
             />
+            <br />
             <ChartHandler 
                 timeRange={0}
                 userId={userId}

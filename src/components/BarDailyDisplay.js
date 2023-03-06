@@ -8,8 +8,11 @@ import {
     ResponsiveContainer,
     Legend,
     XAxis,
-    YAxis }
+    YAxis, 
+    ReferenceLine,
+    Label}
 from "recharts";
+import { todayTimestamp } from "../shared/helpers";
 
 const BarDailyDisplay = ({ data, scales }) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
@@ -39,6 +42,9 @@ const BarDailyDisplay = ({ data, scales }) => {
                     tickLine={{ stroke: 'white' }}
                 />
                 <Legend />
+                <ReferenceLine x={todayTimestamp()} stroke="red">
+                    <Label value="Today" position="insideTop" fill='red'/>
+                </ReferenceLine>
             </BarChart>
         </ResponsiveContainer>
     )

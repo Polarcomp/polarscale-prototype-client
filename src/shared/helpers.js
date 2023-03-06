@@ -17,3 +17,12 @@ export const getEndOfWeek = () => {
     endOfWeek.setDate(endOfWeek.getDate() + ((7 - endOfWeek.getDay()) % 7) + 1);
     return (endOfWeek);
 }
+
+export const todayTimestamp = () => {
+    const today = new Date();
+    today.setMilliseconds(0);
+    today.setSeconds(0);
+    today.setMinutes(0);
+    today.setHours(0);
+    return (today.getTime() / 1000);
+}

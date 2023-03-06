@@ -7,19 +7,12 @@ import {
     CartesianGrid,
     Legend,
     LineChart,
-    ResponsiveContainer
+    ResponsiveContainer,
+    ReferenceLine,
+    Label
 } from 'recharts'
 import moment from 'moment'
-
-const todayTimestamp = () => {
-    const today = new Date();
-    today.setMilliseconds(0);
-    today.setSeconds(0);
-    today.setMinutes(0);
-    today.setHours(0);
-    return (today.getTime() / 1000);
-}
-
+import { todayTimestamp } from '../shared/helpers'
 
 const LineDailyDisplay = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
@@ -54,6 +47,9 @@ const LineDailyDisplay = ({data, timePeriod, scales}) => {
                     tickLine={{ stroke: 'white' }}
                 />
                 <Legend />
+                <ReferenceLine x={todayTimestamp()} stroke="red" >
+                    <Label value="Today" position="insideTop" fill='red'/>
+                </ReferenceLine>
             </LineChart>
         </ResponsiveContainer>
     )
