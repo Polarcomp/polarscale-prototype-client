@@ -21,8 +21,8 @@ export const getEndOfWeek = () => {
 export const todayTimestamp = () => {
     const today = new Date();
     today.setMilliseconds(0);
-    today.setSeconds(0);
-    today.setMinutes(0);
-    today.setHours(0);
+    today.setSeconds(59);
+    today.setMinutes(59);
+    today.setHours(23);
     return (today.getTime() / 1000);
 }
