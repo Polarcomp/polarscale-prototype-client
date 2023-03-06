@@ -21,24 +21,12 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-export const getHistory = async ({range, userId}) => {
+export const getQuery = async({range, userId, endpoint}) => {
     const params = new URLSearchParams([
         ['range', range],
         ['user_id', userId]
     ]);
-    const response = await axios.get(`${baseUrl}/scales/history`, {
-        params,
-        headers
-    });
-    return parseHistData(response);
-}
-
-export const getAccumulated = async ({range, userId}) => {
-    const params = new URLSearchParams([
-        ['range', range],
-        ['user_id', userId]
-    ]);
-    const response = await axios.get(`${baseUrl}/scales/accumulated`, { params, headers });
+    const response = await axios.get(`${baseUrl}/scales/${endpoint}`, { params, headers });
     return parseHistData(response);
 }
 
@@ -55,21 +43,7 @@ export const getLastestAll = async (user_id) => {
     }
 }
 
-export const getTotals = async({range, userId}) => {
-    const params = new URLSearchParams([
-        ['range', range],
-        ['user_id', userId]
-    ]);
-    const response = await axios.get(`${baseUrl}/scales/total`, { params, headers });
-    try {
-        return (response.data);
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-export const getDaily = async ({ userId }) => {
+export const getDaily = async ({ userId, endpoint }) => {
     const lastMonday = getLastMonday().getTime() / 1000;
     const endOfWeek = Math.floor(getEndOfWeek().getTime() / 1000);
     const params = new URLSearchParams([
@@ -77,7 +51,7 @@ export const getDaily = async ({ userId }) => {
         ['stop', endOfWeek],
         ['user_id', userId]
     ]);
-    const response = await axios.get(`${baseUrl}/scales/daily`, { params, headers });
+    const response = await axios.get(`${baseUrl}/scales/${endpoint}`, { params, headers });
     response.data.readings.shift();
     try {
         return { ...response.data }

@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { getDaily } from "../services/scaleReadings";
 import PeriodicBarChart from "./PeriodicBarChart";
+import Line from './Line';
 
 const dailyChartDisplay = {
     display: 'flex',
@@ -13,7 +14,7 @@ const dailyChartDisplay = {
 }
 
 const influxQuery = async (setReadings, userId) => {
-    const response = await getDaily({ userId });
+    const response = await getDaily({ userId, endpoint: 'daily'});
     setReadings(response.readings);
 }
 
@@ -32,6 +33,13 @@ const Daily = ({ userId, scales }) => {
                 Daily Totals
             </Typography>
             <PeriodicBarChart data={readings} scales={scales}/>
+            <Line 
+                timeRange={0}
+                userId={userId}
+                scales={scales}
+                fetchQuery={getDaily}
+                endpoint='dailyaccumulated'
+            />
         </Box>
     )
 }

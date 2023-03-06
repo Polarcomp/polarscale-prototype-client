@@ -22,7 +22,7 @@ const constructTicks = (timePeriod) => {
     return (result);
 }
 
-const LineDisplay = ({data, timePeriod, scales}) => {
+const LineHourlyDisplay = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
     const ticks = constructTicks(timePeriod);
     return (
@@ -64,4 +64,4 @@ const LineDisplay = ({data, timePeriod, scales}) => {
     )
 }
 
-export default LineDisplay
+export default LineHourlyDisplay

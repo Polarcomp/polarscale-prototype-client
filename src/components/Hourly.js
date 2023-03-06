@@ -3,7 +3,7 @@ import ChartRangeControl from './ChartRangeControl'
 import {Box, Typography} from '@mui/material'
 import Totals from './Totals'
 import Line from './Line'
-import { getAccumulated } from '../services/scaleReadings'
+import { getQuery } from '../services/scaleReadings'
 
 const hourlyDisplayStyle = {
     display: 'flex',
@@ -29,7 +29,9 @@ const Hourly = ({ userId, scales }) => {
                 timeRange={timeRange}
                 userId={userId}
                 scales={scales}
-                fetchQuery={getAccumulated}/>
+                fetchQuery={getQuery}
+                endpoint='accumulated'
+            />
         </Box>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getTotals } from "../services/scaleReadings";
+import { getQuery } from "../services/scaleReadings";
 import { Box } from '@mui/material'
 import TotalsIndividual from "./TotalsIndividual";
 import { useInterval } from "../state/hooks/useInterval";
@@ -15,7 +15,7 @@ const flexBox = {
 
 const queryTotal = async (setTotals, timeRange, userId, scales) => {
     const range = timeRange;
-    const response = await getTotals({ range, userId });
+    const response = await getQuery({ range, userId, endpoint: 'total'});
     if (!response.total)
         return
     const result = scales.map(scale => {
