@@ -22,7 +22,7 @@ const constructTicks = (timePeriod) => {
     return (result);
 }
 
-const HistoryChartLine = ({data, timePeriod, scales}) => {
+const LineDisplay = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
     const ticks = constructTicks(timePeriod);
     return (
@@ -64,4 +64,4 @@ const HistoryChartLine = ({data, timePeriod, scales}) => {
     )
 }
 
-export default HistoryChartLine
+export default LineDisplay

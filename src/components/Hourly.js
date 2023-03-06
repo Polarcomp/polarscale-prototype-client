@@ -1,10 +1,11 @@
 import React from 'react'
 import ChartRangeControl from './ChartRangeControl'
 import {Box, Typography} from '@mui/material'
-import HistoryChartAccumulated from './HistoryChartAccumulated'
 import Totals from './Totals'
+import Line from './Line'
+import { getAccumulated } from '../services/scaleReadings'
 
-const historyChartDisplay = {
+const hourlyDisplayStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -12,21 +13,25 @@ const historyChartDisplay = {
     width: '100%'
 }
 
-const HistoryChart = ({ userId, scales }) => {
+const Hourly = ({ userId, scales }) => {
     const [timeRange, setTimeRange] = React.useState(1);
     const chooseRange = (range) => {
         setTimeRange(range);
     }
     return (
-        <Box sx={historyChartDisplay}>
+        <Box sx={hourlyDisplayStyle}>
             <Typography variant="h4" component="h2">
                 Current Hourly Total
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
             <Totals timeRange={timeRange} userId={userId} scales={scales}/>
-            <HistoryChartAccumulated timeRange={timeRange} userId={userId} scales={scales}/>
+            <Line
+                timeRange={timeRange}
+                userId={userId}
+                scales={scales}
+                fetchQuery={getAccumulated}/>
         </Box>
     )
 }
 
-export default HistoryChart
+export default Hourly

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import HistoryChart from '../components/HistoryChart'
+import Hourly from '../components/Hourly'
 import Daily from '../components/Daily'
 import {Box, Typography} from '@mui/material'
 import { getScales } from '../services/user'
@@ -32,7 +32,7 @@ const Dashboard = () => {
             <Typography variant="h2" component="h1">
                 Hello Nolla!
             </Typography>
-            <HistoryChart userId={userId} scales={scales}/>
+            <Hourly userId={userId} scales={scales}/>
             <br />
             <Daily userId={userId} scales={scales}/>
         </Box>
