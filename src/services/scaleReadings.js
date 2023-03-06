@@ -53,6 +53,12 @@ export const getDaily = async ({ userId, endpoint }) => {
     ]);
     const response = await axios.get(`${baseUrl}/scales/${endpoint}`, { params, headers });
     response.data.readings.shift();
+    response.data.readings = response.data.readings.map(reading => {
+        let offset = new Date(reading.timestamp * 1000);
+        offset = offset.getTimezoneOffset() * 60;
+        const timestamp = reading.timestamp + offset;
+        return { ...reading, timestamp: timestamp }
+    })
     try {
         return { ...response.data }
     }

@@ -11,6 +11,15 @@ import {
 } from 'recharts'
 import moment from 'moment'
 
+const todayTimestamp = () => {
+    const today = new Date();
+    today.setMilliseconds(0);
+    today.setSeconds(0);
+    today.setMinutes(0);
+    today.setHours(0);
+    return (today.getTime() / 1000);
+}
+
 
 const LineDailyDisplay = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]

@@ -3,6 +3,7 @@ import { useInterval } from '../state/hooks/useInterval';
 import LineHourlyDisplay from './LineHourlyDisplay'
 import { intervalPeriods } from '../shared/constants.js';
 import LineDailyDisplay from './LineDailyDisplay';
+import BarDailyDisplay from './BarDailyDisplay';
 
 const influxQuery = async (timeRange, userId, callbacks, endpoint) => {
     const range = timeRange;
@@ -11,7 +12,7 @@ const influxQuery = async (timeRange, userId, callbacks, endpoint) => {
     callbacks.setTimePeriod(response.timePeriod);
 }
 
-const Line = ({timeRange, userId, scales, fetchQuery, endpoint}) => {
+const ChartHandler = ({timeRange, userId, scales, fetchQuery, endpoint}) => {
     const [readings, setReadings] = useState([]);
     const [timePeriod, setTimePeriod] = useState({});
 
@@ -29,6 +30,10 @@ const Line = ({timeRange, userId, scales, fetchQuery, endpoint}) => {
             return (
                 <LineHourlyDisplay data={readings} timePeriod={timePeriod} scales={scales}/>
             );
+        case 'daily':
+            return (
+                <BarDailyDisplay data={readings} scales={scales} />
+            );
         case 'dailyaccumulated':
             return (
                 <LineDailyDisplay data={readings} timePeriod={timePeriod} scales={scales}/>
@@ -39,4 +44,4 @@ const Line = ({timeRange, userId, scales, fetchQuery, endpoint}) => {
 
 }
 
-export default Line
+export default ChartHandler

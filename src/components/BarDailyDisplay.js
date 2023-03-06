@@ -11,7 +11,7 @@ import {
     YAxis }
 from "recharts";
 
-const PeriodicBarChart = ({ data, scales }) => {
+const BarDailyDisplay = ({ data, scales }) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
     return (
         <ResponsiveContainer width={"100%"} height={400}>
@@ -44,4 +44,4 @@ const PeriodicBarChart = ({ data, scales }) => {
     )
 }
 
-export default PeriodicBarChart;
+export default BarDailyDisplay;

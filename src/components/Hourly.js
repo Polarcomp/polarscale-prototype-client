@@ -2,7 +2,7 @@ import React from 'react'
 import ChartRangeControl from './ChartRangeControl'
 import {Box, Typography} from '@mui/material'
 import Totals from './Totals'
-import Line from './Line'
+import ChartHandler from './ChartHandler'
 import { getQuery } from '../services/scaleReadings'
 
 const hourlyDisplayStyle = {
@@ -25,7 +25,7 @@ const Hourly = ({ userId, scales }) => {
             </Typography>
             <ChartRangeControl chooseRange={chooseRange}/>
             <Totals timeRange={timeRange} userId={userId} scales={scales}/>
-            <Line
+            <ChartHandler
                 timeRange={timeRange}
                 userId={userId}
                 scales={scales}
