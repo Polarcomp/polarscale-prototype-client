@@ -27,7 +27,7 @@ const LineDailyDisplay = ({data, timePeriod, scales}) => {
         <ResponsiveContainer width={"100%"} height={chartHeight}>
             <LineChart data={data} >
                 <CartesianGrid strokeDasharray="3 3"
-                    verticalFill={verticalFillColors(14)}
+                    verticalFill={verticalFillColors()}
                     fillOpacity={gridFillOpacity}
                 />
                 <Tooltip contentStyle={{backgroundColor: '#121212'}}

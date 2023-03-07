@@ -27,7 +27,8 @@ export const todayTimestamp = () => {
     return (today.getTime() / 1000);
 }
 
-export const verticalFillColors = (length) =>{
+export const verticalFillColors = () =>{
+    const length = 14;
     const colorArray = []
     for (let index = 0; index < length; index++)
     {

@@ -27,7 +27,7 @@ const BarDailyDisplay = ({ data, scales }) => {
         <ResponsiveContainer width={"100%"} height={chartHeight}>
             <BarChart data={data}>
                 <CartesianGrid strokeDasharray="3 3"
-                    verticalFill={verticalFillColors(14)}
+                    verticalFill={verticalFillColors()}
                     fillOpacity={gridFillOpacity}
                 />
                 <Tooltip contentStyle={{backgroundColor: '#121212'}}
