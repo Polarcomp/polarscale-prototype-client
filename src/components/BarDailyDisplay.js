@@ -13,10 +13,10 @@ import {
     Label}
 from "recharts";
 import { todayTimestamp, verticalFillColors } from "../shared/helpers";
+import { chartColors } from '../shared/constants'
 
 const BarDailyDisplay = ({ data, scales }) => {
-    const colors = ["#E6B8DF", "#A1D1AC"]
-    const dateFormat = data.length > 7 ? 'dd D/M/YY' : 'dddd'
+    const dateFormat = data.length > 7 ? 'dd D/M/YY' : 'dddd';
     const gridFillOpacity = 0.7;
     const xTickAngle = data.length > 7 ? -45 : 0;
     const xTickY = data.length > 7 ? 20 : 0;
@@ -37,7 +37,7 @@ const BarDailyDisplay = ({ data, scales }) => {
                 {scales.map((scale, index) => {
                     return <Bar
                         key={scale.device_id}
-                        fill={colors[index]}
+                        fill={chartColors[index]}
                         dataKey={scale.device_id}
                         name={scale.name}
                     />

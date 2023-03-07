@@ -10,6 +10,7 @@ import {
     ResponsiveContainer
 } from 'recharts'
 import moment from 'moment'
+import { chartColors } from '../shared/constants'
 
 const constructTicks = (timePeriod) => {
     const intervals = 6;
@@ -23,7 +24,6 @@ const constructTicks = (timePeriod) => {
 }
 
 const LineHourlyDisplay = ({data, timePeriod, scales}) => {
-    const colors = ["#E6B8DF", "#A1D1AC"]
     const ticks = constructTicks(timePeriod);
     return (
         <ResponsiveContainer width={"100%"} height={400}>
@@ -38,7 +38,7 @@ const LineHourlyDisplay = ({data, timePeriod, scales}) => {
                         isAnimationActive={false}
                         type="monotone"
                         key={scale.device_id}
-                        stroke={colors[index]}
+                        stroke={chartColors[index]}
                         strokeWidth={1}
                         dataKey={scale.device_id}
                         dot={false}

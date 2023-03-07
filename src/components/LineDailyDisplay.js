@@ -13,9 +13,9 @@ import {
 } from 'recharts'
 import moment from 'moment'
 import { todayTimestamp, verticalFillColors } from '../shared/helpers'
+import { chartColors } from '../shared/constants'
 
 const LineDailyDisplay = ({data, timePeriod, scales}) => {
-    const colors = ["#E6B8DF", "#A1D1AC"]
     const dateFormat = data.length > 7 ? 'dd D/M/YY' : 'dddd'
     const gridFillOpacity = 0.7;
     const xTickAngle = data.length > 7 ? -45 : 0;
@@ -39,7 +39,7 @@ const LineDailyDisplay = ({data, timePeriod, scales}) => {
                         isAnimationActive={false}
                         type="monotone"
                         key={scale.device_id}
-                        stroke={colors[index]}
+                        stroke={chartColors[index]}
                         strokeWidth={1}
                         dataKey={scale.device_id}
                         dot={false}

@@ -8,3 +8,4 @@ export const intervalPeriods = {
 export const secondsInWeek = 604800;
 export const secondsInHour = 3600;
 export const hoursInWeek = 168;
+export const chartColors = ["#E6B8DF", "#A1D1AC", "#FBE7C6"];
