@@ -35,7 +35,7 @@ export const verticalFillColors = () =>{
         if (index < length / 2)
             colorArray.push('#555555');
         else
-            colorArray.push('#444444');
+            colorArray.push('#333333');
     }
     return colorArray;
 }

@@ -17,7 +17,7 @@ import { todayTimestamp, verticalFillColors } from '../shared/helpers'
 const LineDailyDisplay = ({data, timePeriod, scales}) => {
     const colors = ["#E6B8DF", "#A1D1AC"]
     const dateFormat = data.length > 7 ? 'dd D/M/YY' : 'dddd'
-    const gridFillOpacity = 0.5;
+    const gridFillOpacity = 0.7;
     const xTickAngle = data.length > 7 ? -45 : 0;
     const xTickY = data.length > 7 ? 20 : 0;
     const xAxisHeight = data.length > 7 ? 60 : 30
