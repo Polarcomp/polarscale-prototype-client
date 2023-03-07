@@ -5,4 +5,6 @@ export const intervalPeriods = {
     hour: 3600000
 };
 
-export const secondsInWeek = 604800
+export const secondsInWeek = 604800;
+export const secondsInHour = 3600;
+export const hoursInWeek = 168;

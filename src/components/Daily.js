@@ -3,6 +3,9 @@ import { Box } from "@mui/system";
 import React, {useState} from "react";
 import { getDaily } from "../services/scaleReadings";
 import ChartHandler from './ChartHandler';
+import Totals from './Totals';
+import { getLastMonday } from '../shared/helpers'
+import { secondsInHour, hoursInWeek } from '../shared/constants'
 
 const dailyChartDisplay = {
     display: 'flex',
@@ -30,29 +33,37 @@ const WeeksSelection = ({weeks, setWeeks}) => {
     )
 }
 
+const hoursOfWeekNow = () => {
+    const now = Math.floor(Date.now() / 1000);
+    const monday = getLastMonday().getTime() / 1000;
+    return (Math.round((now - monday) / secondsInHour));
+}
+
 const Daily = ({ userId, scales }) => {
     const [weeks, setWeeks] = useState(1);
+    const weeksInHours = hoursOfWeekNow() + (weeks - 1) * hoursInWeek;
 
     return (
         <Box sx={dailyChartDisplay}>
             <Typography variant="h4" component="h2">
-                Daily Totals
+                Weekly Totals
             </Typography>
             <WeeksSelection weeks={weeks} setWeeks={setWeeks} />
-            <ChartHandler
-                timeRange={weeks}
-                userId={userId}
-                scales={scales}
-                fetchQuery={getDaily}
-                endpoint='daily'
-            />
-            <br />
+            <Totals timeRange={weeksInHours} userId={userId} scales={scales}/>
             <ChartHandler 
                 timeRange={weeks}
                 userId={userId}
                 scales={scales}
                 fetchQuery={getDaily}
                 endpoint='dailyaccumulated'
+            />
+            <br />
+            <ChartHandler
+                timeRange={weeks}
+                userId={userId}
+                scales={scales}
+                fetchQuery={getDaily}
+                endpoint='daily'
             />
         </Box>
     )
