@@ -26,3 +26,15 @@ export const todayTimestamp = () => {
     today.setHours(23);
     return (today.getTime() / 1000);
 }
+
+export const verticalFillColors = (length) =>{
+    const colorArray = []
+    for (let index = 0; index < length; index++)
+    {
+        if (index < length / 2)
+            colorArray.push('#555555');
+        else
+            colorArray.push('#444444');
+    }
+    return colorArray;
+}
