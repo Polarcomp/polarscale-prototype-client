@@ -9,15 +9,13 @@ const ChartRangeControl = ({chooseRange}) => {
         { value: 3, scaledValue: 4, label: '4 hrs' },
         { value: 4, scaledValue: 8, label: '8 hrs' },
         { value: 5, scaledValue: 12, label: '12 hrs' },
-        { value: 6, scaledValue: 24, label: '1 day' }
+        { value: 6, scaledValue: 24, label: '24 hrs' }
     ];
     const scale = value => {
         const index = value - 1;
         return marks[index].scaledValue;
     }
     const valueFormat = value => {
-        if (value > 12)
-            return value === 24 ? '1 day' : '1 week';
         if (value === 1)
             return '1 hr'
         return `${value} hrs`
