@@ -28,6 +28,8 @@ const scaleComponentArray = (totals) => {
     if (!totals.length)
         return (null);
     return (totals.map(total=>{
+        if (!total.total)
+            return null;
         return <TotalsIndividual
             key={total.device_id} total={total}
         />
